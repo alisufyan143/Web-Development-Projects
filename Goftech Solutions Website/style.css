@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Poppins", serif;
+    
+}
+
+.bg{
+    background-color: #F5FFFC;
+    overflow: auto;
+}
+
+.bg .nav-bar{
+    /* margin: 20px; */
+    /* border: 2px solid red; */
+    padding-top: 13px;
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 300px;
+    background-color: #0075ffa1;
+    
+}
+
+/* .nav-bar .logo{
+    
+} */
+
+.nav-bar .logo img{
+    height: 50px;
+}
+
+.nav-bar .nav-bar-content{
+    margin-top: 15px;
+}
+
+.nav-bar .nav-bar-content li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-bar .nav-bar-content li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* ############Pseudo Classes############# */
+
+/* unvisited link */
+a:link {
+    color: white;
+  }
+  
+  /* visited link */
+a:visited {
+    color: white;
+}
+  
+  /* mouse over link */
+  a:hover {
+    color: #4FAF60;
+  }
+  
+  /* selected link */
+  a:active {
+    color: white;
+  }
+
+/* ############ Utility Classes ########### */
+
+.Green-Text{
+    color: #4FAF60;
+}
+
+.big-text{
+    font-family: "Cuprum", sans-serif;
+    font-size: 75px;
+    font-weight: bold;
+}
+
+.big-text2{
+    font-family: "Cuprum", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.big-text3{
+    font-family: "Cuprum", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* .text-grey{
+    color: #666666;
+} */
+
+
+/* ################# Body Content 1 ############ */
+
+.body-content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-left: 20px;
+    column-gap: 10px;
+}
+
+.body-content .text-area{
+    margin-top: 140px;
+    margin-left: 97px;
+}
+
+
+/* ###################### Body Content 2 #################### */
+
+.body-content2{
+    margin-top: 120px;
+    margin-left: 100px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
+
+.body-content2 .image-banner img{
+    height: 500px;
+}
+
+.text-container{
+    margin-top: 50px;
+    max-width: 470px;
+}
+
+.exp-text{
+    font-family: "Cuprum", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: #4FAF60;
+}
+
+
+/* ################# Services ################# */
+.services-container{
+    margin-top: 100px;
+}
+
+.services{
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ############## Skill Section ################ */
+.skills-container{
+    margin-top: 50px;
+}
+
+.skills-section{
+    width: 1108px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+}
+
+.skills-section .inner-grid{
+    display: grid;
+    grid-template-columns: 33% 66%;
+    padding: 30px 25px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 3px 4px 30px hsla(0, 0%, 53%, 0.1);
+    
+}
+
+.skills-section .inner-grid img{
+    width: 140px;
+    height: 140px;
+}
+
+.skills-section .inner-grid ul{
+    list-style-type: none;
+}
+
+.skills-section .inner-grid li{
+    padding-left: 12px;
+    color: #666666;
+}
+
+.skills-section .inner-grid p{
+    font-family: "Cuprum", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.inner-grid:hover{
+    border-bottom: 1.5px solid red;
+}
+
+
+/* ############## Reasons ############# */
+
+.reason{
+    /* border: 1px solid red; */
+    width: 1108px;
+    height: fit-content;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 10px 20px;
+    box-shadow: 3px 4px 30px hsla(0, 0%, 53%, 0.1);
+}
+
+.reason .reasons{
+    /* border: 1px solid black; */
+    padding: 15px;
+    line-height: 40px;
+    margin: 10px;
+    background-color: inherit;
+    transition: background-color 0.5s ease 0s;
+}
+
+.reason .reasons:hover{
+    color: white;
+    background-color: #28AF60;
+}
+
+#text-big{
+    font-family: "Cuprum", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ############### FAQs ############### */
+
+.faq{
+    padding-top: 100px;
+    width: 1108px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 441px 666px;
+}
+
+.disc{
+    width: 80%;
+    height: 50%;
+    padding: 30px 25px;
+
+    font-family: "Cuprum", sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+
+    box-shadow: 3px 4px 30px hsla(0, 0%, 53%, 0.1);;
+}
+
+.inner-faq-grid{
+    display: grid;
+    grid-template-rows: repeat(auto-fit,1fr);
+    row-gap: 10px;
+}
+
+.inner-faq-grid .same{
+    padding: 20px 25px;
+
+    border-radius: 7.5px;
+    font-family: "Cuprum", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: #E4F5EC;
+    transition: background-color 0.5s ease 0s;
+}
+
+.same:hover{
+    color: white;
+    background-color: #28AF60;
+}
+
+/* ############ Footer ############ */
+
+.big-container{
+    background-color: #121217;
+    color: white;
+}
+
+.footer-container{
+    background-color: #121217;
+    color: white;
+    margin-top: 100px;
+    border-bottom: 1px solid #666;
+}
+
+.foot{
+    width: 1108px;
+    margin: 0 auto;
+    padding: 110px 80px 0px 0px;
+    display: grid;
+    grid-template-columns: 257px 257px 257px 336px;
+    line-height: 40px;
+    
+}
+
+.foot li{
+    text-align: left;
+    list-style-type: none;
+}
+
+.foot li a{
+    text-decoration: none;
+}
+
+.foot .contact a{
+    text-decoration: none;
+}
+
+.foot hr{
+    border: none;
+    border-top: 1px solid #666; 
+    margin: 20px 0;
+}
+
+.big-container .copyrights {
+    padding: 20px;
+    width: 1343px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 670px;
+}
+
+
+.big-container .copyrights li{
+    list-style-type: none;
+    display: inline;
+}
+
+.big-container .copyrights li a{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

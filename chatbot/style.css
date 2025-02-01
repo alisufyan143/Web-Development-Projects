@@ -1,0 +1,130 @@
+/* Animated Chat Icon */
+#chat-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Custom Scrollbar */
+#chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+/* Message Containers for Q/A pairs */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Bot vs. User Messages */
+.message-container[data-type="bot"] {
+  align-self: flex-start;
+  max-width: 75%;
+}
+.message-container[data-type="user"] {
+  align-self: flex-end;
+  max-width: 75%;
+}
+
+/* Message Bubble Styling */
+.chat-message {
+  padding: 8px 12px;
+  border-radius: 12px;
+  word-break: break-word;
+}
+.bot-message {
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+.user-message {
+  background: #bfdbfe;
+}
+
+/* Input Fields */
+.chat-input-field {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #e11d48;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  font-size: 0.75rem;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade Out Class for transitions */
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+
+/* Typing Indicator */
+#typing-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px;
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #4b5563;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+/* Chat Window Open/Close Animation */
+#chat-window.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+  #chat-window {
+    width: 95vw;
+    right: 2.5vw;
+    height: 55vh;
+    max-height: none;
+  }
+}

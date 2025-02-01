@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Chat Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated Chat Icon -->
+  <button id="chat-icon" aria-label="Open chat" class="fixed bottom-4 right-4 z-50 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 focus:outline-none">
+    <!-- Replace with your preferred icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.98 9.98 0 01-4.255-.97L3 20l1.97-3.745A8.99 8.99 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+  </button>
+
+  <!-- Chat Window (initially hidden) -->
+  <section id="chat-window" aria-label="Chat window" class="fixed bottom-4 right-4 w-[320px] max-w-[95vw] h-[400px] max-h-[70vh] bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col transform transition-all duration-300 ease-in-out scale-0 opacity-0">
+    <!-- Header -->
+    <header class="bg-blue-600 px-3 py-2 rounded-t-lg flex justify-between items-center">
+      <h2 class="text-sm font-semibold text-white">Dental Assistant</h2>
+      <div class="flex items-center gap-2">
+        <!-- Back Button (hidden on first question) -->
+        <button id="back-button" aria-label="Go back" class="text-white text-lg hover:text-blue-200 hidden">←</button>
+        <button id="close-chat" aria-label="Close chat" class="text-white text-lg hover:text-blue-200">×</button>
+      </div>
+    </header>
+
+    <!-- Chat Body -->
+    <div id="chat-body" role="log" aria-live="polite" class="flex-1 p-2 overflow-y-auto space-y-2 bg-gray-50">
+      <!-- Message containers appear here -->
+    </div>
+
+    <!-- Input Area -->
+    <div id="chat-input" class="p-2 border-t border-gray-200">
+      <!-- Progress indicator and inputs injected here -->
+    </div>
+  </section>
+
+  <script src="form.js"></script>
+</body>
+</html>

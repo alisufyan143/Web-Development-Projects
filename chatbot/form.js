@@ -10,7 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Store each Q/A container for clean "Back" navigation.
   const messageContainers = [];
 
-  // Questions Configuration
+  // Revised Questions Array with logical grouping.
+  // Group 1: Service Request & Urgency (indices 0-2)
+  // Group 2: Issue Description (indices 3-4)
+  // Group 3: Patient Status & History (indices 5-9)
+  // Group 4: Insurance Information (indices 10-11)
+  // Group 5: Dental Question Specifics (indices 12-14)
+  // Group 6: Appointment Preferences & Additional Services (indices 15-19)
+  // Group 7: Contact Information (indices 20-24)
   const questions = [
     {
       type: 'checkbox',
@@ -42,6 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
       required: true
     },
     {
+      type: 'text',
+      question: 'What is the reason for your appointment?',
+      placeholder: 'Describe your reason...',
+      required: true
+    },
+    {
       type: 'radio',
       question: 'Are you a new patient or an existing patient?',
       options: ['New', 'Existing'],
@@ -49,14 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       type: 'radio',
-      question: 'When would you like to be seen?',
-      options: ['As soon as possible', 'When convenient'],
+      question: 'When was the last time you visited a dental office?',
+      options: ['Less than 6 months ago', '6-12 months ago', 'More than 1 year ago'],
       required: true
     },
     {
-      type: 'text',
-      question: 'What is the reason for your appointment?',
-      placeholder: 'Describe your reason...',
+      type: 'radio',
+      question: 'Are you currently a patient at our office?',
+      options: ['Yes', 'No'],
       required: true
     },
     {
@@ -106,22 +119,40 @@ document.addEventListener('DOMContentLoaded', () => {
       required: true
     },
     {
-      type: 'radio',
-      question: 'When was the last time you visited a dental office?',
-      options: ['Less than 6 months ago', '6-12 months ago', 'More than 1 year ago'],
+      type: 'text',
+      question: 'Please briefly explain your question:',
+      placeholder: 'Enter details here...',
       required: true
     },
     {
       type: 'radio',
-      question: 'Are you currently a patient at our office?',
+      question: 'When would you like to be seen?',
+      options: ['As soon as possible', 'When convenient'],
+      required: true
+    },
+    {
+      type: 'radio',
+      question: 'Would you like a Teledental Video Consultation?',
       options: ['Yes', 'No'],
       required: true
     },
     {
       type: 'text',
-      question: 'Please briefly explain your question:',
-      placeholder: 'Enter details here...',
+      question: 'If yes, provide time zone and location:',
+      placeholder: 'Time zone and city/state...',
+      required: false
+    },
+    {
+      type: 'radio',
+      question: 'Do you want to use our Dental AI Answering system?',
+      options: ['Yes', 'No'],
       required: true
+    },
+    {
+      type: 'text',
+      question: 'If yes, what dental information would you like to know?',
+      placeholder: 'Enter your query...',
+      required: false
     },
     {
       type: 'text',
@@ -152,30 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
       question: 'What is your location? (City, State, or ZIP code)',
       placeholder: 'Enter location...',
       required: true
-    },
-    {
-      type: 'radio',
-      question: 'Would you like a Teledental Video Consultation?',
-      options: ['Yes', 'No'],
-      required: true
-    },
-    {
-      type: 'text',
-      question: 'If yes, provide time zone and location:',
-      placeholder: 'Time zone and city/state...',
-      required: false
-    },
-    {
-      type: 'radio',
-      question: 'Do you want to use our Dental AI Answering system?',
-      options: ['Yes', 'No'],
-      required: true
-    },
-    {
-      type: 'text',
-      question: 'If yes, what dental information would you like to know?',
-      placeholder: 'Enter your query...',
-      required: false
     }
   ];
 
@@ -334,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     errorDiv.textContent = errorMessage;
     if (!isValid) return;
 
-    // Save response and show user message in a container
+    // Save response and display user's answer
     responses[`q${currentStep}`] = { question: question.question, response };
     if (Array.isArray(response)) {
       response.forEach(answer => addMessageContainer(answer, 'user'));
@@ -342,7 +349,25 @@ document.addEventListener('DOMContentLoaded', () => {
       addMessageContainer(response, 'user');
     }
 
-    // Fade out input area, show typing indicator, then load next question
+    // Branching Logic:
+    // After finishing Group 1 (questions 0-2), if "Emergency?" is Yes or "Pain Level?" is High,
+    // skip the additional detailed questions (Groups 2-6) and jump to Group 7 (Contact Information)
+    if (currentStep === 2) {
+      const emergencyResponse = responses.q1.response;
+      const painResponse = responses.q2.response;
+      if (emergencyResponse === "Yes" || painResponse === "High") {
+        // Jump directly to Contact Information (question index 20)
+        currentStep = 20;
+        chatInput.classList.add('fade-out');
+        setTimeout(() => {
+          chatInput.classList.remove('fade-out');
+          showTypingIndicator(showQuestion);
+        }, 300);
+        return;
+      }
+    }
+
+    // Fade out input area, then proceed
     chatInput.classList.add('fade-out');
     setTimeout(() => {
       chatInput.classList.remove('fade-out');
